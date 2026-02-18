@@ -13,7 +13,7 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=index-fix-1" />
 </head>
 
 <body>
@@ -29,13 +29,13 @@
 
       <nav class="nav" aria-label="주요 메뉴">
         <a href="#how">How it works</a>
-        <a href="#pipeline">Data pipeline</a>
         <a href="#calculator">계약 CPA</a>
+        <a href="#case">솔루션 사례</a>
         <a href="#form">무료 진단</a>
       </nav>
 
       <div class="header__cta">
-        <button class="btn btn--ghost" type="button" onclick="scrollToForm('solution')">솔루션 데모</button>
+        <button class="btn btn--ghost" type="button" onclick="scrollToCase()">솔루션 사례 받아보기</button>
         <button class="btn" type="button" onclick="scrollToForm('agency')">무료 진단</button>
 
         <button class="icon-btn" type="button" aria-label="메뉴 열기" data-menu-btn>
@@ -48,12 +48,12 @@
     <div class="mnav" data-menu>
       <div class="container mnav__inner">
         <a href="#how" data-menu-link>How it works</a>
-        <a href="#pipeline" data-menu-link>Data pipeline</a>
         <a href="#calculator" data-menu-link>계약 CPA</a>
+        <a href="#case" data-menu-link>솔루션 사례</a>
         <a href="#form" data-menu-link>무료 진단</a>
 
         <div class="mnav__cta">
-          <button class="btn btn--ghost" type="button" onclick="scrollToForm('solution')" data-menu-link>솔루션 데모</button>
+          <button class="btn btn--ghost" type="button" onclick="scrollToCase()" data-menu-link>솔루션 사례 받아보기</button>
           <button class="btn" type="button" onclick="scrollToForm('agency')" data-menu-link>무료 진단</button>
         </div>
       </div>
@@ -105,14 +105,14 @@
           </div>
 
           <div class="hero__cta">
-  <button class="btn btn--lg" type="button" onclick="scrollToForm('agency')">
-    무료 계약 CPA 진단
-  </button>
+            <button class="btn btn--lg" type="button" onclick="scrollToForm('agency')">
+              무료 계약 CPA 진단
+            </button>
 
-  <button class="btn btn--lg btn--ghost" type="button" onclick="scrollToCase()">
-    솔루션 사례 받아보기
-  </button>
-</div>
+            <button class="btn btn--lg btn--ghost" type="button" onclick="scrollToCase()">
+              솔루션 사례 받아보기
+            </button>
+          </div>
 
           <div class="micro">
             <span class="micro__dot" aria-hidden="true"></span>
@@ -258,33 +258,42 @@
             <p class="hint">* 계약 CPA = 광고비 ÷ 계약 수</p>
           </div>
 
+          <!-- 결과 카드: 계산 후 버튼 노출 -->
           <div class="calc__result" aria-live="polite">
             <p class="calc__k">결과</p>
+
             <p class="calc__v" id="result">값을 입력하면 계약 CPA가 표시됩니다.</p>
-            <ul class="calc__tips">
+
+            <ul class="calc__tips" id="calcTips">
               <li>채널별로 계약 CPA를 분해하면 최적화 포인트가 보입니다.</li>
               <li>리드가 많아도 계약이 적다면 ‘계약 신호’가 부족할 수 있어요.</li>
             </ul>
+
+            <div class="calc__actions" id="calcActions" hidden>
+              <button class="btn" type="button" onclick="scrollToForm('agency')">상담하러가기</button>
+              <button class="btn btn--ghost" type="button" onclick="resetCalculator()">다시 계산하기</button>
+            </div>
           </div>
         </div>
       </div>
     </section>
+
     <!-- CASE STUDY CTA -->
-<section class="section">
-  <div class="container">
-    <div class="cta-row">
-      <div class="cta-row__copy">
-        <p class="cta-row__t">실제 기업은 어떻게 계약 CPA를 낮췄을까요?</p>
-        <p class="cta-row__d">
-          업종별 계약 전환 개선 사례와 채널별 기여도 분석 리포트를 받아보세요.
-        </p>
+    <section class="section">
+      <div class="container">
+        <div class="cta-row">
+          <div class="cta-row__copy">
+            <p class="cta-row__t">실제 기업은 어떻게 계약 CPA를 낮췄을까요?</p>
+            <p class="cta-row__d">
+              업종별 계약 전환 개선 사례와 채널별 기여도 분석 리포트를 받아보세요.
+            </p>
+          </div>
+          <button class="btn" type="button" onclick="scrollToCase()">
+            솔루션 사례 받아보기
+          </button>
+        </div>
       </div>
-      <button class="btn" type="button" onclick="scrollToCase()">
-        솔루션 사례 받아보기
-      </button>
-    </div>
-  </div>
-</section>
+    </section>
 
     <!-- FORM -->
     <section class="section" id="form">
@@ -363,50 +372,58 @@
         </div>
       </div>
     </section>
+
     <!-- CASE FORM -->
-<section class="section section--tint" id="case">
-  <div class="container">
-    <div class="section__head">
-      <div>
-        <div class="chip">Case Study</div>
-        <h2 class="h2">솔루션 사례 받아보기</h2>
-        <p class="sub">
-          계약 CPA를 실제로 개선한 사례 리포트를 이메일로 보내드립니다.
-        </p>
+    <section class="section section--tint" id="case">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <div class="chip">Case Study</div>
+            <h2 class="h2">솔루션 사례 받아보기</h2>
+            <p class="sub">계약 CPA를 실제로 개선한 사례 리포트를 이메일로 보내드립니다.</p>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <form id="caseForm" class="form" autocomplete="on">
+            <div class="row">
+              <div class="field">
+                <label for="caseCompany">회사명</label>
+                <input id="caseCompany" name="company" type="text" placeholder="회사명" required />
+              </div>
+              <div class="field">
+                <label for="caseEmail">이메일</label>
+                <input id="caseEmail" name="email" type="email" placeholder="이메일" required />
+              </div>
+            </div>
+
+            <div class="agree">
+              <label class="check">
+                <input id="caseAgree" type="checkbox" required />
+                <span>개인정보 처리에 동의합니다.</span>
+              </label>
+              <p class="agree__hint">제출 시 이메일로 리포트를 발송합니다.</p>
+            </div>
+
+            <button class="btn btn--lg" type="submit">
+              <span class="btn__text">사례 리포트 받아보기</span>
+              <span class="btn__spinner" aria-hidden="true"></span>
+            </button>
+          </form>
+
+          <aside class="side">
+            <div class="side__card">
+              <p class="side__title">리포트 내용</p>
+              <ul class="side__list">
+                <li>채널별 계약 기여도 분석 예시</li>
+                <li>계약 CPA 개선 구조</li>
+                <li>광고 예산 재배분 전략</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
       </div>
-    </div>
-
-    <div class="form-grid">
-      <form id="caseForm" class="form" autocomplete="on">
-        <div class="row">
-          <div class="field">
-            <label for="caseCompany">회사명</label>
-            <input id="caseCompany" type="text" placeholder="회사명" required />
-          </div>
-          <div class="field">
-            <label for="caseEmail">이메일</label>
-            <input id="caseEmail" type="email" placeholder="이메일" required />
-          </div>
-        </div>
-
-        <button class="btn btn--lg" type="submit">
-          사례 리포트 받아보기
-        </button>
-      </form>
-
-      <aside class="side">
-        <div class="side__card">
-          <p class="side__title">리포트 내용</p>
-          <ul class="side__list">
-            <li>채널별 계약 기여도 분석 예시</li>
-            <li>계약 CPA 개선 구조</li>
-            <li>광고 예산 재배분 전략</li>
-          </ul>
-        </div>
-      </aside>
-    </div>
-  </div>
-</section>
+    </section>
 
     <footer class="footer">
       <div class="container footer__inner">
@@ -421,6 +438,7 @@
         <div class="footer__links">
           <a href="#how">How it works</a>
           <a href="#calculator">계약 CPA</a>
+          <a href="#case">솔루션 사례</a>
           <a href="#form" onclick="scrollToForm('agency');return false;">무료 진단</a>
         </div>
       </div>
