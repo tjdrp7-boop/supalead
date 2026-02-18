@@ -177,3 +177,21 @@ window.calculateCPA = function(){
     }, 900);
   });
 })();
+// ===== Scroll to case section =====
+window.scrollToCase = function(){
+  const section = qs("#case");
+  if (!section) return;
+  section.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
+// ===== Case form submit =====
+(() => {
+  const form = qs("#caseForm");
+  if (!form) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    toast("사례 리포트를 곧 이메일로 보내드릴게요.");
+    form.reset();
+  });
+})();
