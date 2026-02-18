@@ -26,9 +26,7 @@ function toast(message){
   const header = qs(".header[data-elevate]");
   if (!header) return;
 
-  const onScroll = () => {
-    header.classList.toggle("is-scrolled", window.scrollY > 6);
-  };
+  const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 6);
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 })();
@@ -80,7 +78,6 @@ function toast(message){
     });
   });
 
-  // expose for CTA buttons
   window.__setLeadType = setType;
 })();
 
@@ -112,7 +109,40 @@ window.scrollToCase = function(){
   }, 520);
 };
 
-// ===== Calculator =====
+// ===== Calculator (with recommendation) =====
+const CPA_RECOMMEND_THRESHOLD = 300000; // 30만원 기준 (원하면 숫자만 바꾸면 됨)
+
+function setCalcRecommendation({ cpa }) {
+  const resultEl = qs("#result");
+  const tipsEl = qs("#calcTips");
+  const actionsEl = qs("#calcActions");
+
+  if (!resultEl) return;
+
+  // calcActions 안에 "상담하러가기" 버튼이 첫번째라고 가정
+  const primaryBtn = actionsEl ? actionsEl.querySelector("button.btn:not(.btn--ghost)") : null;
+
+  const isSolution = cpa >= CPA_RECOMMEND_THRESHOLD;
+
+  // 결과 문구 + 추천 한 줄 추가
+  const base = `계약 CPA는 ₩ ${cpa.toLocaleString("ko-KR")} 입니다.`;
+  const rec = isSolution
+    ? "현재 값이 높아 보입니다. 솔루션 데모로 구조 개선 포인트를 빠르게 확인해보세요."
+    : "현재 값 기준으로 대행 최적화 여지가 있습니다. 무료 진단으로 개선 우선순위를 받아보세요.";
+
+  resultEl.textContent = `${base} ${rec}`;
+
+  // 버튼 라벨/동작 변경
+  if (primaryBtn) {
+    primaryBtn.textContent = isSolution ? "솔루션 상담하러가기" : "대행 상담하러가기";
+    primaryBtn.onclick = () => window.scrollToForm(isSolution ? "solution" : "agency");
+  }
+
+  // 노출 상태
+  if (tipsEl) tipsEl.hidden = true;
+  if (actionsEl) actionsEl.hidden = false;
+}
+
 window.calculateCPA = function(){
   const adCostEl = qs("#adCost");
   const contractsEl = qs("#contracts");
@@ -134,11 +164,7 @@ window.calculateCPA = function(){
   }
 
   const cpa = Math.round(adCost / contracts);
-  resultEl.textContent = `계약 CPA는 ₩ ${cpa.toLocaleString("ko-KR")} 입니다.`;
-
-  // 계산 후 버튼 노출
-  if (tipsEl) tipsEl.hidden = true;
-  if (actionsEl) actionsEl.hidden = false;
+  setCalcRecommendation({ cpa });
 };
 
 // ===== Reset calculator =====
@@ -154,6 +180,13 @@ window.resetCalculator = function(){
   if (resultEl) resultEl.textContent = "값을 입력하면 계약 CPA가 표시됩니다.";
   if (tipsEl) tipsEl.hidden = false;
   if (actionsEl) actionsEl.hidden = true;
+
+  // calcActions primary 버튼 텍스트 원복(안전)
+  const primaryBtn = actionsEl ? actionsEl.querySelector("button.btn:not(.btn--ghost)") : null;
+  if (primaryBtn) {
+    primaryBtn.textContent = "상담하러가기";
+    primaryBtn.onclick = () => window.scrollToForm("agency");
+  }
 
   if (adCostEl) adCostEl.focus({ preventScroll: true });
 };
@@ -203,15 +236,11 @@ window.resetCalculator = function(){
 
     if (submitBtn) submitBtn.classList.add("is-loading");
 
-    // TODO: 실제 전송 엔드포인트 연결 시 아래로 교체
-    // fetch("https://...", { method:"POST", body:new FormData(form) })
-
     setTimeout(() => {
       if (submitBtn) submitBtn.classList.remove("is-loading");
       toast("신청이 접수됐어요. 곧 연락드릴게요!");
       form.reset();
 
-      // default back to agency
       if (window.__setLeadType) window.__setLeadType("agency");
     }, 900);
   });
@@ -233,9 +262,6 @@ window.resetCalculator = function(){
     }
 
     if (submitBtn) submitBtn.classList.add("is-loading");
-
-    // TODO: 실제 전송 엔드포인트 연결 시 아래로 교체
-    // fetch("https://...", { method:"POST", body:new FormData(form) })
 
     setTimeout(() => {
       if (submitBtn) submitBtn.classList.remove("is-loading");
