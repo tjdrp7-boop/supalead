@@ -700,3 +700,9 @@ img{ max-width:100%; display:block; }
   .mnav__cta{ flex-direction: column; }
   .mnav__cta .btn{ width: 100%; }
 }
+.calc__actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
