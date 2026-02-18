@@ -99,11 +99,27 @@ window.scrollToForm = function(type){
   }, 520);
 };
 
+// ===== Scroll to case section (CTA) =====
+window.scrollToCase = function(){
+  const section = qs("#case");
+  if (!section) return;
+
+  section.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  setTimeout(() => {
+    const first = qs("#caseCompany");
+    if (first) first.focus({ preventScroll: true });
+  }, 520);
+};
+
 // ===== Calculator =====
 window.calculateCPA = function(){
   const adCostEl = qs("#adCost");
   const contractsEl = qs("#contracts");
   const resultEl = qs("#result");
+  const tipsEl = qs("#calcTips");
+  const actionsEl = qs("#calcActions");
+
   if (!adCostEl || !contractsEl || !resultEl) return;
 
   const adCost = toNumber(adCostEl.value);
@@ -112,14 +128,37 @@ window.calculateCPA = function(){
   if (!adCost || !contracts) {
     resultEl.textContent = "월 광고비와 월 계약 수를 입력해주세요.";
     toast("값을 입력해주세요.");
+    if (actionsEl) actionsEl.hidden = true;
+    if (tipsEl) tipsEl.hidden = false;
     return;
   }
 
   const cpa = Math.round(adCost / contracts);
   resultEl.textContent = `계약 CPA는 ₩ ${cpa.toLocaleString("ko-KR")} 입니다.`;
+
+  // 계산 후 버튼 노출
+  if (tipsEl) tipsEl.hidden = true;
+  if (actionsEl) actionsEl.hidden = false;
 };
 
-// Live formatting for number fields
+// ===== Reset calculator =====
+window.resetCalculator = function(){
+  const adCostEl = qs("#adCost");
+  const contractsEl = qs("#contracts");
+  const resultEl = qs("#result");
+  const tipsEl = qs("#calcTips");
+  const actionsEl = qs("#calcActions");
+
+  if (adCostEl) adCostEl.value = "";
+  if (contractsEl) contractsEl.value = "";
+  if (resultEl) resultEl.textContent = "값을 입력하면 계약 CPA가 표시됩니다.";
+  if (tipsEl) tipsEl.hidden = false;
+  if (actionsEl) actionsEl.hidden = true;
+
+  if (adCostEl) adCostEl.focus({ preventScroll: true });
+};
+
+// ===== Live formatting for number fields =====
 (() => {
   const moneyIds = ["#adCost", "#monthlyAdCost"];
   moneyIds.forEach(id => {
@@ -145,7 +184,7 @@ window.calculateCPA = function(){
   }
 })();
 
-// ===== Form submit (demo) =====
+// ===== Lead Form submit (demo) =====
 (() => {
   const form = qs("#leadForm");
   const year = qs("#year");
@@ -177,21 +216,31 @@ window.calculateCPA = function(){
     }, 900);
   });
 })();
-// ===== Scroll to case section =====
-window.scrollToCase = function(){
-  const section = qs("#case");
-  if (!section) return;
-  section.scrollIntoView({ behavior: "smooth", block: "start" });
-};
 
-// ===== Case form submit =====
+// ===== Case form submit (demo) =====
 (() => {
   const form = qs("#caseForm");
   if (!form) return;
 
+  const submitBtn = form.querySelector("button[type='submit']");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    toast("사례 리포트를 곧 이메일로 보내드릴게요.");
-    form.reset();
+
+    const agree = qs("#caseAgree");
+    if (agree && !agree.checked) {
+      toast("개인정보 처리 동의가 필요해요.");
+      return;
+    }
+
+    if (submitBtn) submitBtn.classList.add("is-loading");
+
+    // TODO: 실제 전송 엔드포인트 연결 시 아래로 교체
+    // fetch("https://...", { method:"POST", body:new FormData(form) })
+
+    setTimeout(() => {
+      if (submitBtn) submitBtn.classList.remove("is-loading");
+      toast("사례 리포트를 이메일로 보내드릴게요.");
+      form.reset();
+    }, 700);
   });
 })();
