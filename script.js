@@ -30,11 +30,11 @@ function formatInputKeepCaret(el, formatter = formatNumberKR) {
 
   el.value = formatted;
 
-  // digitsBeforeCaret 번째 숫자 뒤 위치를 찾아 커서 이동
   if (digitsBeforeCaret === 0) {
     try { el.setSelectionRange(0, 0); } catch (_) {}
     return;
   }
+
   let seen = 0;
   let pos = formatted.length;
   for (let i = 0; i < formatted.length; i++) {
@@ -61,13 +61,39 @@ function sleep(ms) {
 }
 
 /* =========================
+   Lead type state (persist)
+========================= */
+const LEAD_TYPE_KEY = 'supalead_lead_type';
+function getLeadType() {
+  const v = localStorage.getItem(LEAD_TYPE_KEY);
+  return (v === 'solution' || v === 'agency') ? v : 'agency';
+}
+function setLeadType(v) {
+  const type = (v === 'solution' || v === 'agency') ? v : 'agency';
+  localStorage.setItem(LEAD_TYPE_KEY, type);
+
+  const typeInput = $('#type');
+  if (typeInput) typeInput.value = type;
+
+  // 폼 세그먼트 버튼 UI 반영
+  const segBtns = $$('.seg__btn');
+  segBtns.forEach(b => {
+    const active = (b.dataset.type === type);
+    b.classList.toggle('is-active', active);
+    b.setAttribute('aria-selected', active ? 'true' : 'false');
+  });
+
+  // 외부 CTA들도 "auto"면 내부적으로 타입 사용
+  // (텍스트 변경까지 하고 싶으면 여기서 버튼 text도 조정 가능)
+}
+
+/* =========================
    Smooth scroll with header offset
 ========================= */
 function getHeaderOffset() {
   const header = $('.header');
   if (!header) return 0;
-  const rect = header.getBoundingClientRect();
-  return Math.ceil(rect.height);
+  return Math.ceil(header.getBoundingClientRect().height);
 }
 
 function scrollToSection(id, { focusSel } = {}) {
@@ -173,7 +199,6 @@ const Menu = (() => {
 
     b.addEventListener('click', toggle);
 
-    // menu links close
     $$('[data-menu-link]').forEach(el => {
       el.addEventListener('click', () => close());
     });
@@ -219,33 +244,26 @@ function initPipelineTabs() {
 }
 
 /* =========================
-   Segmented control (lead type)
+   Lead type segment (form)
 ========================= */
 function initLeadTypeSegment() {
   const typeInput = $('#type');
   const segBtns = $$('.seg__btn');
   if (!typeInput || !segBtns.length) return;
 
-  function setType(t) {
-    const type = t || 'agency';
-    typeInput.value = type;
-
-    segBtns.forEach(b => {
-      const active = (b.dataset.type === type);
-      b.classList.toggle('is-active', active);
-      b.setAttribute('aria-selected', active ? 'true' : 'false');
-    });
-  }
+  // init from storage
+  setLeadType(getLeadType());
 
   segBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      setType(btn.dataset.type);
-      toast(typeInput.value === 'solution' ? '솔루션 데모로 설정했어요.' : '대행 상담으로 설정했어요.');
+      const t = btn.dataset.type || 'agency';
+      setLeadType(t);
+      toast(t === 'solution' ? '솔루션 데모로 설정했어요.' : '대행 상담으로 설정했어요.');
     });
   });
 
-  // expose for scroll CTA
-  window.__setLeadType = setType;
+  // expose
+  window.__setLeadType = setLeadType;
 }
 
 /* =========================
@@ -259,10 +277,13 @@ function initScrollCTAs() {
     e.preventDefault();
 
     const id = t.dataset.scroll;
-    const type = t.dataset.type;
+    let type = t.dataset.type;
 
-    if (id === 'form' && window.__setLeadType) {
-      window.__setLeadType(type || 'agency');
+    // auto type => use persisted type
+    if (!type || type === 'auto') type = getLeadType();
+
+    if (id === 'form') {
+      setLeadType(type);
       scrollToSection('form', { focusSel: '#company' });
       Menu.close();
       return;
@@ -290,212 +311,12 @@ function initScrollCTAs() {
     const target = document.getElementById(id);
     if (!target) return;
 
-    // 기본 브라우저 점프 방지
     e.preventDefault();
     scrollToSection(id);
     Menu.close();
   });
 }
 
-/* =========================
-   Calculator
-========================= */
-const CPA_RECOMMEND_THRESHOLD = 300000;
-
-function setCalcRecommendation({ cpa }) {
-  const resultEl = $('#result');
-  const tipsEl = $('#calcTips');
-  const actionsEl = $('#calcActions');
-  const primaryBtn = $('#calcPrimary');
-
-  if (!resultEl) return;
-
-  const isSolution = cpa >= CPA_RECOMMEND_THRESHOLD;
-  const base = `계약 CPA는 ₩ ${cpa.toLocaleString('ko-KR')} 입니다.`;
-  const rec = isSolution
-    ? '현재 값이 높아 보입니다. 솔루션 데모로 구조 개선 포인트를 빠르게 확인해보세요.'
-    : '현재 값 기준으로 대행 최적화 여지가 있습니다. 무료 진단으로 개선 우선순위를 받아보세요.';
-
-  resultEl.textContent = `${base} ${rec}`;
-
-  if (primaryBtn) {
-    primaryBtn.textContent = isSolution ? '솔루션 상담하러가기' : '대행 상담하러가기';
-    primaryBtn.dataset.type = isSolution ? 'solution' : 'agency';
-    primaryBtn.dataset.scroll = 'form';
-  }
-
-  if (tipsEl) tipsEl.hidden = true;
-  if (actionsEl) actionsEl.hidden = false;
-}
-
-function resetCalculator() {
-  const adCostEl = $('#adCost');
-  const contractsEl = $('#contracts');
-  const resultEl = $('#result');
-  const tipsEl = $('#calcTips');
-  const actionsEl = $('#calcActions');
-  const primaryBtn = $('#calcPrimary');
-
-  if (adCostEl) adCostEl.value = '';
-  if (contractsEl) contractsEl.value = '';
-  if (resultEl) resultEl.textContent = '값을 입력하면 계약 CPA가 표시됩니다.';
-  if (tipsEl) tipsEl.hidden = false;
-  if (actionsEl) actionsEl.hidden = true;
-
-  if (primaryBtn) {
-    primaryBtn.textContent = '상담하러가기';
-    primaryBtn.dataset.type = 'agency';
-    primaryBtn.dataset.scroll = 'form';
-  }
-
-  if (adCostEl) adCostEl.focus({ preventScroll: true });
-}
-
-function initCalculator() {
-  const form = $('#calcForm');
-  const adCostEl = $('#adCost');
-  const contractsEl = $('#contracts');
-  const resetBtn = $('#calcReset');
-  const resultEl = $('#result');
-  const tipsEl = $('#calcTips');
-  const actionsEl = $('#calcActions');
-
-  if (!form || !adCostEl || !contractsEl || !resultEl) return;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const adCost = toNumber(adCostEl.value);
-    const contracts = toNumber(contractsEl.value);
-
-    if (!adCost || !contracts) {
-      resultEl.textContent = '월 광고비와 월 계약 수를 입력해주세요.';
-      toast('값을 입력해주세요.');
-      if (actionsEl) actionsEl.hidden = true;
-      if (tipsEl) tipsEl.hidden = false;
-      return;
-    }
-
-    const cpa = Math.round(adCost / contracts);
-    setCalcRecommendation({ cpa });
-  });
-
-  if (resetBtn) resetBtn.addEventListener('click', resetCalculator);
-}
-
-/* =========================
-   Live formatting
-========================= */
-function initLiveFormatting() {
-  // money fields: keep caret
-  ['#adCost', '#monthlyAdCost'].forEach(id => {
-    const el = $(id);
-    if (!el) return;
-
-    el.addEventListener('input', () => formatInputKeepCaret(el, formatNumberKR));
-  });
-
-  // contracts: 숫자만(간단 포맷)
-  const contracts = $('#contracts');
-  if (contracts) {
-    contracts.addEventListener('input', () => {
-      // contracts는 쉼표가 의미 없을 수 있지만, 자리수 큰 경우 대비해 유지
-      formatInputKeepCaret(contracts, formatNumberKR);
-    });
-  }
-}
-
-/* =========================
-   Form submits (demo -> 실서버 교체 쉬운 구조)
-========================= */
-function setButtonLoading(btn, loading) {
-  if (!btn) return;
-  btn.classList.toggle('is-loading', !!loading);
-  btn.disabled = !!loading;
-}
-
-async function initLeadForm() {
-  const form = $('#leadForm');
-  const year = $('#year');
-  if (year) year.textContent = String(new Date().getFullYear());
-  if (!form) return;
-
-  const submitBtn = form.querySelector("button[type='submit']");
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const agree = $('#agree');
-    if (agree && !agree.checked) {
-      toast('개인정보 처리 동의가 필요해요.');
-      return;
-    }
-
-    setButtonLoading(submitBtn, true);
-
-    try {
-      // TODO: 실서버 연결 시 여기를 fetch로 교체
-      // const payload = Object.fromEntries(new FormData(form));
-      // await fetch('/api/leads', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
-      await sleep(900);
-
-      toast('신청이 접수됐어요. 곧 연락드릴게요!');
-      form.reset();
-      if (window.__setLeadType) window.__setLeadType('agency');
-    } catch (err) {
-      toast('오류가 발생했어요. 잠시 후 다시 시도해주세요.');
-      console.error(err);
-    } finally {
-      setButtonLoading(submitBtn, false);
-    }
-  });
-}
-
-async function initCaseForm() {
-  const form = $('#caseForm');
-  if (!form) return;
-
-  const submitBtn = form.querySelector("button[type='submit']");
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const agree = $('#caseAgree');
-    if (agree && !agree.checked) {
-      toast('개인정보 처리 동의가 필요해요.');
-      return;
-    }
-
-    setButtonLoading(submitBtn, true);
-
-    try {
-      // TODO: 실서버 연결 시 여기를 fetch로 교체
-      await sleep(700);
-      toast('사례 리포트를 이메일로 보내드릴게요.');
-      form.reset();
-    } catch (err) {
-      toast('오류가 발생했어요. 잠시 후 다시 시도해주세요.');
-      console.error(err);
-    } finally {
-      setButtonLoading(submitBtn, false);
-    }
-  });
-}
-
-/* =========================
-   Init
-========================= */
-document.addEventListener('DOMContentLoaded', () => {
-  initHeaderElevate();
-  Menu.init();
-  initPipelineTabs();
-  initLeadTypeSegment();
-  initScrollCTAs();
-  initCalculator();
-  initLiveFormatting();
-  initLeadForm();
-  initCaseForm();
-  initDashboardTabs();
-  initFAQAccordion();
-});
 /* =========================
    Dashboard tabs
 ========================= */
@@ -543,3 +364,281 @@ function initFAQAccordion() {
     });
   });
 }
+
+/* =========================
+   Calculator
+========================= */
+const CPA_RECOMMEND_THRESHOLD = 300000;
+let calcComplexity = 'yes'; // default
+
+function initCalcComplexity() {
+  const btns = $$('.calcq__btn');
+  if (!btns.length) return;
+
+  const set = (v) => {
+    calcComplexity = (v === 'no') ? 'no' : 'yes';
+    btns.forEach(b => {
+      const on = b.dataset.complex === calcComplexity;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-checked', on ? 'true' : 'false');
+    });
+  };
+
+  btns.forEach(b => b.addEventListener('click', () => set(b.dataset.complex)));
+  set(calcComplexity);
+}
+
+function setCalcRecommendation({ cpa }) {
+  const resultEl = $('#result');
+  const tipsEl = $('#calcTips');
+  const actionsEl = $('#calcActions');
+  const primaryBtn = $('#calcPrimary');
+
+  if (!resultEl) return;
+
+  // base: threshold 기준
+  let recommend = (cpa >= CPA_RECOMMEND_THRESHOLD) ? 'solution' : 'agency';
+
+  // 운영이 복잡하면 솔루션 쪽으로 강하게
+  if (calcComplexity === 'yes') recommend = 'solution';
+
+  const base = `계약 CPA는 ₩ ${cpa.toLocaleString('ko-KR')} 입니다.`;
+  const rec = (recommend === 'solution')
+    ? '운영 복잡도/자동화 관점에서 솔루션 데모를 추천합니다. 계약 신호 기반으로 타겟팅을 개선해보세요.'
+    : '현재 값 기준으로 대행 최적화 여지가 있습니다. 무료 진단으로 개선 우선순위를 받아보세요.';
+
+  resultEl.textContent = `${base} ${rec}`;
+
+  if (primaryBtn) {
+    primaryBtn.textContent = (recommend === 'solution') ? '솔루션 상담하러가기' : '대행 상담하러가기';
+    primaryBtn.dataset.type = recommend;
+    primaryBtn.dataset.scroll = 'form';
+  }
+
+  if (tipsEl) tipsEl.hidden = true;
+  if (actionsEl) actionsEl.hidden = false;
+}
+
+function resetCalculator() {
+  const adCostEl = $('#adCost');
+  const contractsEl = $('#contracts');
+  const resultEl = $('#result');
+  const tipsEl = $('#calcTips');
+  const actionsEl = $('#calcActions');
+  const primaryBtn = $('#calcPrimary');
+
+  if (adCostEl) adCostEl.value = '';
+  if (contractsEl) contractsEl.value = '';
+  if (resultEl) resultEl.textContent = '값을 입력하면 계약 CPA가 표시됩니다.';
+  if (tipsEl) tipsEl.hidden = false;
+  if (actionsEl) actionsEl.hidden = true;
+
+  if (primaryBtn) {
+    primaryBtn.textContent = '상담하러가기';
+    primaryBtn.dataset.type = 'auto';
+    primaryBtn.dataset.scroll = 'form';
+  }
+
+  if (adCostEl) adCostEl.focus({ preventScroll: true });
+}
+
+function initCalculator() {
+  const form = $('#calcForm');
+  const adCostEl = $('#adCost');
+  const contractsEl = $('#contracts');
+  const resetBtn = $('#calcReset');
+  const resultEl = $('#result');
+  const tipsEl = $('#calcTips');
+  const actionsEl = $('#calcActions');
+
+  if (!form || !adCostEl || !contractsEl || !resultEl) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const adCost = toNumber(adCostEl.value);
+    const contracts = toNumber(contractsEl.value);
+
+    if (!adCost || !contracts) {
+      resultEl.textContent = '월 광고비와 월 계약 수를 입력해주세요.';
+      toast('값을 입력해주세요.');
+      if (actionsEl) actionsEl.hidden = true;
+      if (tipsEl) tipsEl.hidden = false;
+      return;
+    }
+
+    const cpa = Math.round(adCost / contracts);
+    setCalcRecommendation({ cpa });
+  });
+
+  if (resetBtn) resetBtn.addEventListener('click', resetCalculator);
+}
+
+/* =========================
+   Live formatting
+========================= */
+function initLiveFormatting() {
+  ['#adCost', '#monthlyAdCost'].forEach(id => {
+    const el = $(id);
+    if (!el) return;
+    el.addEventListener('input', () => formatInputKeepCaret(el, formatNumberKR));
+  });
+
+  const contracts = $('#contracts');
+  if (contracts) {
+    contracts.addEventListener('input', () => formatInputKeepCaret(contracts, formatNumberKR));
+  }
+}
+
+/* =========================
+   Forms: demo submit + 완료 카드
+========================= */
+function setButtonLoading(btn, loading) {
+  if (!btn) return;
+  btn.classList.toggle('is-loading', !!loading);
+  btn.disabled = !!loading;
+}
+
+function showSuccess(formEl, successEl, show) {
+  if (!formEl || !successEl) return;
+  formEl.hidden = !!show;
+  successEl.hidden = !show;
+}
+
+async function initLeadForm() {
+  const form = $('#leadForm');
+  const success = $('#leadSuccess');
+  const retry = $('#leadRetry');
+
+  const year = $('#year');
+  if (year) year.textContent = String(new Date().getFullYear());
+
+  if (!form || !success) return;
+
+  const submitBtn = form.querySelector("button[type='submit']");
+
+  // retry
+  if (retry) {
+    retry.addEventListener('click', () => {
+      showSuccess(form, success, false);
+      form.reset();
+      setLeadType(getLeadType());
+      const first = $('#company');
+      if (first) first.focus({ preventScroll: true });
+    });
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const agree = $('#agree');
+    if (agree && !agree.checked) {
+      toast('개인정보 처리 동의가 필요해요.');
+      return;
+    }
+
+    setButtonLoading(submitBtn, true);
+
+    try {
+      // TODO: 실서버 연결 시 fetch로 교체
+      await sleep(900);
+
+      toast('신청이 접수됐어요. 곧 연락드릴게요!');
+      showSuccess(form, success, true);
+    } catch (err) {
+      toast('오류가 발생했어요. 잠시 후 다시 시도해주세요.');
+      console.error(err);
+    } finally {
+      setButtonLoading(submitBtn, false);
+    }
+  });
+}
+
+async function initCaseForm() {
+  const form = $('#caseForm');
+  const success = $('#caseSuccess');
+  const retry = $('#caseRetry');
+  if (!form || !success) return;
+
+  const submitBtn = form.querySelector("button[type='submit']");
+
+  if (retry) {
+    retry.addEventListener('click', () => {
+      showSuccess(form, success, false);
+      form.reset();
+      const first = $('#caseCompany');
+      if (first) first.focus({ preventScroll: true });
+    });
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const agree = $('#caseAgree');
+    if (agree && !agree.checked) {
+      toast('개인정보 처리 동의가 필요해요.');
+      return;
+    }
+
+    setButtonLoading(submitBtn, true);
+
+    try {
+      // TODO: 실서버 연결 시 fetch로 교체
+      await sleep(700);
+
+      toast('사례 리포트를 이메일로 보내드릴게요.');
+      showSuccess(form, success, true);
+    } catch (err) {
+      toast('오류가 발생했어요. 잠시 후 다시 시도해주세요.');
+      console.error(err);
+    } finally {
+      setButtonLoading(submitBtn, false);
+    }
+  });
+}
+
+/* =========================
+   Sticky CTA (mobile) - show after 25% scroll
+========================= */
+function initStickyCTA() {
+  const el = $('[data-sticky-cta]');
+  if (!el) return;
+
+  const mq = window.matchMedia('(max-width: 980px)');
+  const onScroll = () => {
+    const doc = document.documentElement;
+    const max = Math.max(1, doc.scrollHeight - window.innerHeight);
+    const progress = window.scrollY / max;
+
+    const shouldShow = mq.matches && progress > 0.25;
+    el.hidden = !shouldShow;
+  };
+
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  mq.addEventListener?.('change', onScroll);
+}
+
+/* =========================
+   Init
+========================= */
+document.addEventListener('DOMContentLoaded', () => {
+  initHeaderElevate();
+  Menu.init();
+
+  initPipelineTabs();
+  initLeadTypeSegment();
+  initScrollCTAs();
+
+  initDashboardTabs();
+  initFAQAccordion();
+
+  initCalcComplexity();
+  initCalculator();
+  initLiveFormatting();
+
+  initLeadForm();
+  initCaseForm();
+
+  initStickyCTA();
+});
