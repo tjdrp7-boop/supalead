@@ -13,7 +13,7 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
 
-  <link rel="stylesheet" href="style.css?v=landing-v2" />
+  <link rel="stylesheet" href="style.css?v=landing-v3" />
 </head>
 
 <body>
@@ -29,16 +29,17 @@
 
       <nav class="nav" aria-label="주요 메뉴">
         <a href="#how">How it works</a>
+        <a href="#product">대시보드</a>
         <a href="#calculator">계약 CPA</a>
-        <a href="#case">솔루션 사례</a>
-        <a href="#form">무료 진단</a>
+        <a href="#case">사례</a>
+        <a href="#faq">FAQ</a>
       </nav>
 
       <div class="header__cta">
         <button class="btn btn--ghost" type="button" data-scroll="case">
           솔루션 사례 받아보기
         </button>
-        <button class="btn" type="button" data-scroll="form" data-type="agency">
+        <button class="btn" type="button" data-scroll="form" data-type="auto">
           무료 진단
         </button>
 
@@ -59,15 +60,16 @@
     <div class="mnav" id="mobileMenu" data-menu>
       <div class="container mnav__inner">
         <a href="#how" data-menu-link>How it works</a>
+        <a href="#product" data-menu-link>대시보드</a>
         <a href="#calculator" data-menu-link>계약 CPA</a>
-        <a href="#case" data-menu-link>솔루션 사례</a>
-        <a href="#form" data-menu-link data-type="agency">무료 진단</a>
+        <a href="#case" data-menu-link>사례</a>
+        <a href="#faq" data-menu-link>FAQ</a>
 
         <div class="mnav__cta">
           <button class="btn btn--ghost" type="button" data-scroll="case" data-menu-link>
             솔루션 사례 받아보기
           </button>
-          <button class="btn" type="button" data-scroll="form" data-type="agency" data-menu-link>
+          <button class="btn" type="button" data-scroll="form" data-type="auto" data-menu-link>
             무료 진단
           </button>
         </div>
@@ -107,7 +109,7 @@
               <span class="bullet__icon" aria-hidden="true">⛨</span>
               <div>
                 <p class="bullet__t">개인정보 보호 규정 준수</p>
-                <p class="bullet__d">GDPR/CCPA 안전한 서버 처리</p>
+                <p class="bullet__d">서버사이드/해시 처리로 안전한 전송</p>
               </div>
             </div>
             <div class="bullet">
@@ -120,9 +122,10 @@
           </div>
 
           <div class="hero__cta">
-            <button class="btn btn--lg" type="button" data-scroll="form" data-type="agency">
+            <button class="btn btn--lg" type="button" data-scroll="form" data-type="auto">
               무료 계약 CPA 진단
             </button>
+
             <button class="btn btn--lg btn--ghost" type="button" data-scroll="case">
               솔루션 사례 받아보기
             </button>
@@ -193,7 +196,7 @@
       </div>
     </section>
 
-    <!-- SOCIAL PROOF (마케팅 느낌 + 신뢰) -->
+    <!-- SOCIAL PROOF -->
     <section class="proof" aria-label="신뢰 지표">
       <div class="container proof__inner">
         <p class="proof__label">Trusted by growth teams</p>
@@ -222,60 +225,62 @@
         </div>
       </div>
     </section>
-<!-- PROBLEM -->
-<section class="section" id="problem">
-  <div class="container">
-    <div class="section__head">
-      <div>
-        <div class="chip">Why contracts don’t grow</div>
-        <h2 class="h2">리드는 느는데 계약이 안 늘어나는 이유</h2>
-        <p class="sub">대부분 “계약 신호”가 광고에 전달되지 않는 구조 문제입니다.</p>
+
+    <!-- PROBLEM -->
+    <section class="section" id="problem">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <div class="chip">Why contracts don’t grow</div>
+            <h2 class="h2">리드는 느는데 계약이 안 늘어나는 이유</h2>
+            <p class="sub">대부분 “계약 신호”가 광고에 전달되지 않는 구조 문제입니다.</p>
+          </div>
+          <button class="btn btn--ghost" type="button" data-scroll="form" data-type="auto">
+            무료 진단으로 구조 확인
+          </button>
+        </div>
+
+        <div class="problem__grid">
+          <article class="p-card">
+            <div class="p-card__icon" aria-hidden="true">①</div>
+            <h3 class="p-card__t">계약 신호 부재</h3>
+            <p class="p-card__d">
+              리드/문의까지만 최적화되면, 계약 가능성이 낮은 유입이 늘어도 매체는 “성공”으로 학습합니다.
+            </p>
+            <div class="p-card__tag">해결: 계약/매출 이벤트를 학습</div>
+          </article>
+
+          <article class="p-card">
+            <div class="p-card__icon" aria-hidden="true">②</div>
+            <h3 class="p-card__t">채널별 기여도 불명확</h3>
+            <p class="p-card__d">
+              “어느 채널이 계약을 만들었는지”가 안 보이면 예산 재배분이 감으로 운영됩니다.
+            </p>
+            <div class="p-card__tag">해결: 채널·캠페인·키워드 기여도</div>
+          </article>
+
+          <article class="p-card">
+            <div class="p-card__icon" aria-hidden="true">③</div>
+            <h3 class="p-card__t">CRM-광고 데이터 단절</h3>
+            <p class="p-card__d">
+              CRM에 계약이 찍혀도 광고 플랫폼에 학습이 안 되면 최적화는 리드까지만 머뭅니다.
+            </p>
+            <div class="p-card__tag">해결: CRM 실시간 동기화</div>
+          </article>
+        </div>
+
+        <div class="cta-row">
+          <div class="cta-row__copy">
+            <p class="cta-row__t">우리 회사는 어디가 막혔는지 10분 만에 확인</p>
+            <p class="cta-row__d">무료 진단에서 연결 구조 + 개선 우선순위를 1페이지로 정리해드립니다.</p>
+          </div>
+          <button class="btn" type="button" data-scroll="form" data-type="auto">
+            무료 계약 CPA 진단 받기
+          </button>
+        </div>
       </div>
-      <button class="btn btn--ghost" type="button" data-scroll="form" data-type="agency">
-        무료 진단으로 구조 확인
-      </button>
-    </div>
+    </section>
 
-    <div class="problem__grid">
-      <article class="p-card">
-        <div class="p-card__icon" aria-hidden="true">①</div>
-        <h3 class="p-card__t">계약 신호 부재</h3>
-        <p class="p-card__d">
-          리드/문의까지만 최적화되면, 계약 가능성이 낮은 유입이 늘어도 매체는 “성공”으로 학습합니다.
-        </p>
-        <div class="p-card__tag">해결: 계약/매출 이벤트를 학습</div>
-      </article>
-
-      <article class="p-card">
-        <div class="p-card__icon" aria-hidden="true">②</div>
-        <h3 class="p-card__t">채널별 기여도 불명확</h3>
-        <p class="p-card__d">
-          “어느 채널이 계약을 만들었는지”가 안 보이면 예산 재배분이 감으로 운영됩니다.
-        </p>
-        <div class="p-card__tag">해결: 채널·캠페인·키워드 기여도</div>
-      </article>
-
-      <article class="p-card">
-        <div class="p-card__icon" aria-hidden="true">③</div>
-        <h3 class="p-card__t">CRM-광고 데이터 단절</h3>
-        <p class="p-card__d">
-          CRM에 계약이 찍혀도 광고 플랫폼에 학습이 안 되면 최적화는 리드까지만 머뭅니다.
-        </p>
-        <div class="p-card__tag">해결: CRM 실시간 동기화</div>
-      </article>
-    </div>
-
-    <div class="cta-row">
-      <div class="cta-row__copy">
-        <p class="cta-row__t">우리 회사는 어디가 막혔는지 10분 만에 확인</p>
-        <p class="cta-row__d">무료 진단에서 연결 구조 + 개선 우선순위를 1페이지로 정리해드립니다.</p>
-      </div>
-      <button class="btn" type="button" data-scroll="form" data-type="agency">
-        무료 계약 CPA 진단 받기
-      </button>
-    </div>
-  </div>
-</section>
     <!-- HOW IT WORKS -->
     <section class="section" id="how">
       <div class="container center">
@@ -313,7 +318,7 @@
             <span class="step__badge">03</span>
           </div>
           <h3 class="step__title">인사이트 확인</h3>
-          <p class="step__desc">광고 채널별 실제 계약/매출 기여도를 확인합니다.</p>
+          <p class="step__desc">채널별 실제 계약/매출 기여도를 확인합니다.</p>
           <div class="tag">실시간 대시보드 제공</div>
         </article>
       </div>
@@ -323,198 +328,201 @@
           <p class="cta-row__t">우리 회사에 맞는 연결 방식이 궁금하신가요?</p>
           <p class="cta-row__d">무료 진단에서 데이터 연결 구조와 개선 우선순위를 제안드립니다.</p>
         </div>
-        <button class="btn" type="button" data-scroll="form" data-type="agency">무료 진단 받기</button>
+        <button class="btn" type="button" data-scroll="form" data-type="auto">무료 진단 받기</button>
       </div>
     </section>
-<!-- PRODUCT PREVIEW -->
-<section class="section section--tint" id="product">
-  <div class="container">
-    <div class="section__head">
-      <div>
-        <div class="chip">Product Preview</div>
-        <h2 class="h2">계약 중심 대시보드로 “결정이 빨라집니다”</h2>
-        <p class="sub">채널별 계약 기여도 → 계약 CPA 추이 → 세그먼트 분석까지 한 화면에서.</p>
-      </div>
-    </div>
 
-    <div class="preview">
-      <div class="tabs" role="tablist" aria-label="대시보드 보기">
-        <button class="tabs__btn is-active" type="button" data-tab="attr" role="tab" aria-selected="true">
-          채널별 계약 기여도
-        </button>
-        <button class="tabs__btn" type="button" data-tab="cpa" role="tab" aria-selected="false">
-          계약 CPA 추이
-        </button>
-        <button class="tabs__btn" type="button" data-tab="seg" role="tab" aria-selected="false">
-          세그먼트 분석
-        </button>
-      </div>
-
-      <div class="tabs__panels">
-        <!-- Panel 1 -->
-        <div class="tabs__panel" data-panel="attr">
-          <div class="dash">
-            <div class="dash__head">
-              <div>
-                <p class="dash__title">채널별 계약 기여도</p>
-                <p class="dash__sub">“계약이 만든 채널” 기준으로 예산을 재배분합니다.</p>
-              </div>
-              <div class="dash__pill">Last 30 days</div>
-            </div>
-
-            <div class="dash__kpis">
-              <div class="dk">
-                <p class="dk__v">₩ 284,000</p>
-                <p class="dk__k">계약 CPA</p>
-              </div>
-              <div class="dk">
-                <p class="dk__v">+21%</p>
-                <p class="dk__k">계약 전환율</p>
-              </div>
-              <div class="dk">
-                <p class="dk__v">₩ 38.4M</p>
-                <p class="dk__k">추정 매출</p>
-              </div>
-            </div>
-
-            <div class="dash__grid">
-              <div class="dash__card">
-                <p class="dash__cardt">기여도 TOP 채널</p>
-
-                <div class="bars">
-                  <div class="bar">
-                    <span class="bar__name">Meta</span>
-                    <span class="bar__track"><span class="bar__fill" style="width:72%"></span></span>
-                    <span class="bar__val">72%</span>
-                  </div>
-                  <div class="bar">
-                    <span class="bar__name">Google</span>
-                    <span class="bar__track"><span class="bar__fill" style="width:54%"></span></span>
-                    <span class="bar__val">54%</span>
-                  </div>
-                  <div class="bar">
-                    <span class="bar__name">Naver</span>
-                    <span class="bar__track"><span class="bar__fill" style="width:31%"></span></span>
-                    <span class="bar__val">31%</span>
-                  </div>
-                </div>
-
-                <p class="dash__note">* 예시는 데모 화면입니다. 실제 데이터로 동일 구조 제공</p>
-              </div>
-
-              <div class="dash__card dash__card--soft">
-                <p class="dash__cardt">바로 액션으로 연결</p>
-                <ul class="dash__list">
-                  <li>계약 기여도 낮은 캠페인/키워드 예산 절감</li>
-                  <li>계약 전환 높은 세그먼트 확장 타겟 자동화</li>
-                  <li>CRM 계약 이벤트로 매체 학습 강화</li>
-                </ul>
-                <button class="btn btn--ghost" type="button" data-scroll="form" data-type="solution">
-                  이 구조로 데모 요청
-                </button>
-              </div>
-            </div>
+    <!-- PRODUCT PREVIEW -->
+    <section class="section section--tint" id="product">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <div class="chip">Product Preview</div>
+            <h2 class="h2">계약 중심 대시보드로 “결정이 빨라집니다”</h2>
+            <p class="sub">채널별 계약 기여도 → 계약 CPA 추이 → 세그먼트 분석까지 한 화면에서.</p>
           </div>
         </div>
 
-        <!-- Panel 2 -->
-        <div class="tabs__panel" data-panel="cpa" hidden>
-          <div class="dash">
-            <div class="dash__head">
-              <div>
-                <p class="dash__title">계약 CPA 추이</p>
-                <p class="dash__sub">“리드 CPA”가 아니라 “계약 CPA” 기준으로 최적화합니다.</p>
-              </div>
-              <div class="dash__pill">Weekly</div>
-            </div>
+        <div class="preview">
+          <div class="tabs" role="tablist" aria-label="대시보드 보기">
+            <button class="tabs__btn is-active" type="button" data-tab="attr" role="tab" aria-selected="true">
+              채널별 계약 기여도
+            </button>
+            <button class="tabs__btn" type="button" data-tab="cpa" role="tab" aria-selected="false">
+              계약 CPA 추이
+            </button>
+            <button class="tabs__btn" type="button" data-tab="seg" role="tab" aria-selected="false">
+              세그먼트 분석
+            </button>
+          </div>
 
-            <div class="dash__grid">
-              <div class="dash__card">
-                <p class="dash__cardt">주간 계약 CPA 변화</p>
-                <div class="spark">
-                  <span style="height:40%"></span>
-                  <span style="height:52%"></span>
-                  <span style="height:46%"></span>
-                  <span style="height:62%"></span>
-                  <span style="height:55%"></span>
-                  <span style="height:44%"></span>
-                  <span style="height:38%"></span>
+          <div class="tabs__panels">
+            <!-- Panel 1 -->
+            <div class="tabs__panel" data-panel="attr">
+              <div class="dash">
+                <div class="dash__head">
+                  <div>
+                    <p class="dash__title">채널별 계약 기여도</p>
+                    <p class="dash__sub">“계약이 만든 채널” 기준으로 예산을 재배분합니다.</p>
+                  </div>
+                  <div class="dash__pill">Last 30 days</div>
                 </div>
-                <p class="dash__note">추세가 보이면 “예산 재배분”이 근거를 가집니다.</p>
-              </div>
 
-              <div class="dash__card dash__card--soft">
-                <p class="dash__cardt">추천 액션 예시</p>
-                <ul class="dash__list">
-                  <li>CPA 상승 주간: 소재/랜딩/세그먼트 진단</li>
-                  <li>CPA 하락 주간: 확장 가능한 채널에 예산 증액</li>
-                  <li>이상치 탐지: CRM 이벤트 누락/지연 체크</li>
-                </ul>
-                <button class="btn" type="button" data-scroll="form" data-type="agency">
-                  무료 진단으로 개선 우선순위 받기
-                </button>
+                <div class="dash__kpis">
+                  <div class="dk">
+                    <p class="dk__v">₩ 284,000</p>
+                    <p class="dk__k">계약 CPA</p>
+                  </div>
+                  <div class="dk">
+                    <p class="dk__v">+21%</p>
+                    <p class="dk__k">계약 전환율</p>
+                  </div>
+                  <div class="dk">
+                    <p class="dk__v">₩ 38.4M</p>
+                    <p class="dk__k">추정 매출</p>
+                  </div>
+                </div>
+
+                <div class="dash__grid">
+                  <div class="dash__card">
+                    <p class="dash__cardt">기여도 TOP 채널</p>
+
+                    <div class="bars">
+                      <div class="bar">
+                        <span class="bar__name">Meta</span>
+                        <span class="bar__track"><span class="bar__fill" style="width:72%"></span></span>
+                        <span class="bar__val">72%</span>
+                      </div>
+                      <div class="bar">
+                        <span class="bar__name">Google</span>
+                        <span class="bar__track"><span class="bar__fill" style="width:54%"></span></span>
+                        <span class="bar__val">54%</span>
+                      </div>
+                      <div class="bar">
+                        <span class="bar__name">Naver</span>
+                        <span class="bar__track"><span class="bar__fill" style="width:31%"></span></span>
+                        <span class="bar__val">31%</span>
+                      </div>
+                    </div>
+
+                    <p class="dash__note">* 예시는 데모 화면입니다. 실제 데이터로 동일 구조 제공</p>
+                  </div>
+
+                  <div class="dash__card dash__card--soft">
+                    <p class="dash__cardt">바로 액션으로 연결</p>
+                    <ul class="dash__list">
+                      <li>계약 기여도 낮은 캠페인/키워드 예산 절감</li>
+                      <li>계약 전환 높은 세그먼트 확장 타겟 자동화</li>
+                      <li>CRM 계약 이벤트로 매체 학습 강화</li>
+                    </ul>
+                    <button class="btn btn--ghost" type="button" data-scroll="form" data-type="solution">
+                      이 구조로 데모 요청
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
+
+            <!-- Panel 2 -->
+            <div class="tabs__panel" data-panel="cpa" hidden>
+              <div class="dash">
+                <div class="dash__head">
+                  <div>
+                    <p class="dash__title">계약 CPA 추이</p>
+                    <p class="dash__sub">“리드 CPA”가 아니라 “계약 CPA” 기준으로 최적화합니다.</p>
+                  </div>
+                  <div class="dash__pill">Weekly</div>
+                </div>
+
+                <div class="dash__grid">
+                  <div class="dash__card">
+                    <p class="dash__cardt">주간 계약 CPA 변화</p>
+                    <div class="spark" aria-hidden="true">
+                      <span style="height:40%"></span>
+                      <span style="height:52%"></span>
+                      <span style="height:46%"></span>
+                      <span style="height:62%"></span>
+                      <span style="height:55%"></span>
+                      <span style="height:44%"></span>
+                      <span style="height:38%"></span>
+                    </div>
+                    <p class="dash__note">추세가 보이면 “예산 재배분”이 근거를 가집니다.</p>
+                  </div>
+
+                  <div class="dash__card dash__card--soft">
+                    <p class="dash__cardt">추천 액션 예시</p>
+                    <ul class="dash__list">
+                      <li>CPA 상승 주간: 소재/랜딩/세그먼트 진단</li>
+                      <li>CPA 하락 주간: 확장 가능한 채널에 예산 증액</li>
+                      <li>이상치 탐지: CRM 이벤트 누락/지연 체크</li>
+                    </ul>
+                    <button class="btn" type="button" data-scroll="form" data-type="auto">
+                      무료 진단으로 개선 우선순위 받기
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 3 -->
+            <div class="tabs__panel" data-panel="seg" hidden>
+              <div class="dash">
+                <div class="dash__head">
+                  <div>
+                    <p class="dash__title">세그먼트 분석</p>
+                    <p class="dash__sub">업종/지역/랜딩/캠페인별로 “계약이 되는 조합”을 찾습니다.</p>
+                  </div>
+                  <div class="dash__pill">Segments</div>
+                </div>
+
+                <div class="dash__grid">
+                  <div class="dash__card">
+                    <p class="dash__cardt">계약 전환 높은 세그먼트</p>
+                    <div class="seglist">
+                      <div class="segrow">
+                        <span class="segrow__k">리타겟팅 · 상담페이지</span>
+                        <span class="segrow__v">+29%</span>
+                      </div>
+                      <div class="segrow">
+                        <span class="segrow__k">검색 · 브랜드키워드</span>
+                        <span class="segrow__v">+18%</span>
+                      </div>
+                      <div class="segrow">
+                        <span class="segrow__k">메타 · 유사타겟 3%</span>
+                        <span class="segrow__v">+14%</span>
+                      </div>
+                    </div>
+                    <p class="dash__note">이 세그먼트를 “학습 신호”로 만들어 확장합니다.</p>
+                  </div>
+
+                  <div class="dash__card dash__card--soft">
+                    <p class="dash__cardt">바로 연결되는 최적화</p>
+                    <ul class="dash__list">
+                      <li>전환 좋은 세그먼트 → 확장/유사타겟</li>
+                      <li>전환 낮은 조합 → 제외/예산 컷</li>
+                      <li>채널별 퍼널 병목 → 랜딩/세일즈 개선</li>
+                    </ul>
+                    <button class="btn btn--ghost" type="button" data-scroll="case">
+                      사례 리포트로 확인하기
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <!-- Panel 3 -->
-        <div class="tabs__panel" data-panel="seg" hidden>
-          <div class="dash">
-            <div class="dash__head">
-              <div>
-                <p class="dash__title">세그먼트 분석</p>
-                <p class="dash__sub">업종/지역/랜딩/캠페인별로 “계약이 되는 조합”을 찾습니다.</p>
-              </div>
-              <div class="dash__pill">Segments</div>
-            </div>
-
-            <div class="dash__grid">
-              <div class="dash__card">
-                <p class="dash__cardt">계약 전환 높은 세그먼트</p>
-                <div class="seglist">
-                  <div class="segrow">
-                    <span class="segrow__k">리타겟팅 · 상담페이지</span>
-                    <span class="segrow__v">+29%</span>
-                  </div>
-                  <div class="segrow">
-                    <span class="segrow__k">검색 · 브랜드키워드</span>
-                    <span class="segrow__v">+18%</span>
-                  </div>
-                  <div class="segrow">
-                    <span class="segrow__k">메타 · 유사타겟 3%</span>
-                    <span class="segrow__v">+14%</span>
-                  </div>
-                </div>
-                <p class="dash__note">이 세그먼트를 “학습 신호”로 만들어 확장합니다.</p>
-              </div>
-
-              <div class="dash__card dash__card--soft">
-                <p class="dash__cardt">바로 연결되는 최적화</p>
-                <ul class="dash__list">
-                  <li>전환 좋은 세그먼트 → 확장/유사타겟</li>
-                  <li>전환 낮은 조합 → 제외/예산 컷</li>
-                  <li>채널별 퍼널 병목 → 랜딩/세일즈 개선</li>
-                </ul>
-                <button class="btn btn--ghost" type="button" data-scroll="case">
-                  사례 리포트로 확인하기
-                </button>
-              </div>
-            </div>
+        <div class="cta-row">
+          <div class="cta-row__copy">
+            <p class="cta-row__t">우리 데이터로 이 화면을 만들면 어떤 인사이트가 나올까요?</p>
+            <p class="cta-row__d">무료 진단에서 연동 구조/가능 범위를 바로 답변드려요.</p>
           </div>
+          <button class="btn" type="button" data-scroll="form" data-type="auto">무료 진단 받기</button>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="cta-row">
-      <div class="cta-row__copy">
-        <p class="cta-row__t">우리 데이터로 이 화면을 만들면 어떤 인사이트가 나올까요?</p>
-        <p class="cta-row__d">무료 진단에서 연동 구조/가능 범위를 바로 답변드려요.</p>
-      </div>
-      <button class="btn" type="button" data-scroll="form" data-type="agency">무료 진단 받기</button>
-    </div>
-  </div>
-</section>
     <!-- CALCULATOR -->
     <section class="section section--tint" id="calculator">
       <div class="container">
@@ -539,6 +547,16 @@
               <input id="contracts" type="text" inputmode="numeric" placeholder="예: 12" />
             </div>
 
+            <!-- 진단 질문(리드 퀄리티 업) -->
+            <div class="calcq" aria-label="운영 복잡도 질문">
+              <p class="calcq__k">채널/캠페인이 많아 운영이 복잡한가요?</p>
+              <div class="calcq__seg" role="radiogroup" aria-label="운영 복잡도 선택">
+                <button type="button" class="calcq__btn is-active" data-complex="yes" aria-checked="true">예</button>
+                <button type="button" class="calcq__btn" data-complex="no" aria-checked="false">아니오</button>
+              </div>
+              <p class="calcq__hint">* “예”면 자동화/기여도 분석(솔루션) 추천이 더 강해집니다.</p>
+            </div>
+
             <button class="btn" type="submit">계산하기</button>
             <p class="hint">* 계약 CPA = 광고비 ÷ 계약 수</p>
           </form>
@@ -554,7 +572,7 @@
             </ul>
 
             <div class="calc__actions" id="calcActions" hidden>
-              <button class="btn" type="button" id="calcPrimary" data-scroll="form" data-type="agency">
+              <button class="btn" type="button" id="calcPrimary" data-scroll="form" data-type="auto">
                 상담하러가기
               </button>
               <button class="btn btn--ghost" type="button" id="calcReset">
@@ -574,7 +592,9 @@
             <p class="cta-row__t">실제 기업은 어떻게 계약 CPA를 낮췄을까요?</p>
             <p class="cta-row__d">업종별 개선 사례와 채널별 기여도 분석 리포트를 받아보세요.</p>
           </div>
-          <button class="btn" type="button" data-scroll="case">솔루션 사례 받아보기</button>
+          <button class="btn" type="button" data-scroll="case">
+            솔루션 사례 받아보기
+          </button>
         </div>
       </div>
     </section>
@@ -591,53 +611,71 @@
         </div>
 
         <div class="form-grid">
-          <form id="leadForm" class="form" autocomplete="on">
-            <input type="hidden" id="type" name="type" value="agency" />
+          <div>
+            <form id="leadForm" class="form" autocomplete="on">
+              <input type="hidden" id="type" name="type" value="agency" />
 
-            <div class="seg" role="tablist" aria-label="신청 유형 선택">
-              <button type="button" class="seg__btn is-active" data-type="agency" role="tab" aria-selected="true">
-                대행 상담
+              <div class="seg" role="tablist" aria-label="신청 유형 선택">
+                <button type="button" class="seg__btn is-active" data-type="agency" role="tab" aria-selected="true">
+                  대행 상담
+                </button>
+                <button type="button" class="seg__btn" data-type="solution" role="tab" aria-selected="false">
+                  솔루션 데모
+                </button>
+              </div>
+
+              <div class="row">
+                <div class="field">
+                  <label for="company">회사명</label>
+                  <input id="company" name="company" type="text" placeholder="예: 수파리드" autocomplete="organization" required />
+                </div>
+                <div class="field">
+                  <label for="role">직책</label>
+                  <input id="role" name="role" type="text" placeholder="예: 마케팅 팀장" autocomplete="organization-title" required />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="field">
+                  <label for="monthlyAdCost">월 광고비 (원)</label>
+                  <input id="monthlyAdCost" name="monthlyAdCost" type="text" inputmode="numeric" placeholder="예: 5,000,000" required />
+                </div>
+                <div class="field">
+                  <label for="phone">연락처</label>
+                  <input id="phone" name="phone" type="tel" placeholder="예: 010-1234-5678" autocomplete="tel" required />
+                </div>
+              </div>
+
+              <div class="agree">
+                <label class="check">
+                  <input id="agree" type="checkbox" required />
+                  <span>개인정보 처리에 동의합니다.</span>
+                </label>
+                <p class="agree__hint">제출 시 상담을 위한 연락을 드릴 수 있어요.</p>
+              </div>
+
+              <button class="btn btn--lg" type="submit">
+                <span class="btn__text">신청 완료</span>
+                <span class="btn__spinner" aria-hidden="true"></span>
               </button>
-              <button type="button" class="seg__btn" data-type="solution" role="tab" aria-selected="false">
-                솔루션 데모
-              </button>
-            </div>
+            </form>
 
-            <div class="row">
-              <div class="field">
-                <label for="company">회사명</label>
-                <input id="company" name="company" type="text" placeholder="예: 수파리드" autocomplete="organization" required />
-              </div>
-              <div class="field">
-                <label for="role">직책</label>
-                <input id="role" name="role" type="text" placeholder="예: 마케팅 팀장" autocomplete="organization-title" required />
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="field">
-                <label for="monthlyAdCost">월 광고비 (원)</label>
-                <input id="monthlyAdCost" name="monthlyAdCost" type="text" inputmode="numeric" placeholder="예: 5,000,000" required />
-              </div>
-              <div class="field">
-                <label for="phone">연락처</label>
-                <input id="phone" name="phone" type="tel" placeholder="예: 010-1234-5678" autocomplete="tel" required />
+            <!-- 완료 카드(전환 신뢰 ↑) -->
+            <div class="success" id="leadSuccess" hidden aria-live="polite">
+              <div class="success__icon" aria-hidden="true">✓</div>
+              <div class="success__body">
+                <p class="success__t">신청이 접수됐어요!</p>
+                <p class="success__d">
+                  평균 24시간 이내에 연락드리며,<br />
+                  먼저 “계약 CPA 구조/우선순위”를 빠르게 정리해드립니다.
+                </p>
+                <div class="success__actions">
+                  <button class="btn" type="button" data-scroll="calculator">계산기 다시 보기</button>
+                  <button class="btn btn--ghost" type="button" id="leadRetry">다시 신청하기</button>
+                </div>
               </div>
             </div>
-
-            <div class="agree">
-              <label class="check">
-                <input id="agree" type="checkbox" required />
-                <span>개인정보 처리에 동의합니다.</span>
-              </label>
-              <p class="agree__hint">제출 시 상담을 위한 연락을 드릴 수 있어요.</p>
-            </div>
-
-            <button class="btn btn--lg" type="submit">
-              <span class="btn__text">신청 완료</span>
-              <span class="btn__spinner" aria-hidden="true"></span>
-            </button>
-          </form>
+          </div>
 
           <aside class="side">
             <div class="side__card">
@@ -660,100 +698,7 @@
         </div>
       </div>
     </section>
-<!-- FAQ -->
-<section class="section" id="faq">
-  <div class="container">
-    <div class="section__head">
-      <div>
-        <div class="chip">FAQ</div>
-        <h2 class="h2">도입 전에 가장 많이 묻는 질문</h2>
-        <p class="sub">불확실한 지점을 먼저 제거하면 전환이 올라갑니다.</p>
-      </div>
-      <button class="btn btn--ghost" type="button" data-scroll="form" data-type="agency">
-        바로 무료 진단
-      </button>
-    </div>
 
-    <div class="faq__list">
-      <details class="faq__item">
-        <summary class="faq__q">
-          개발 리소스가 많이 필요하나요?
-          <span class="faq__icon" aria-hidden="true"></span>
-        </summary>
-        <div class="faq__a">
-          기본은 <strong>스크립트 1줄</strong> 또는 GTM으로 시작합니다. CRM 연동도 대부분 가이드에 따라 빠르게 진행 가능하며,
-          조직 상황에 따라 최소 범위로 먼저 연결 후 확장할 수 있어요.
-        </div>
-      </details>
-
-      <details class="faq__item">
-        <summary class="faq__q">
-          개인정보/보안은 어떻게 처리하나요?
-          <span class="faq__icon" aria-hidden="true"></span>
-        </summary>
-        <div class="faq__a">
-          개인정보는 <strong>필요 최소</strong>만 사용하며, 전송 시 <strong>해시/서버사이드</strong> 처리 구조로 설계합니다.
-          내부 권한 분리 및 로그 기반 검증 흐름을 권장합니다.
-        </div>
-      </details>
-
-      <details class="faq__item">
-        <summary class="faq__q">
-          어떤 이벤트까지 광고 매체에 학습시키나요?
-          <span class="faq__icon" aria-hidden="true"></span>
-        </summary>
-        <div class="faq__a">
-          리드(문의)뿐 아니라 <strong>MQL/SQL/계약/매출</strong> 같은 “비즈니스 신호”를 단계적으로 연결합니다.
-          팀의 세일즈 프로세스에 맞춘 이벤트 정의가 핵심입니다.
-        </div>
-      </details>
-
-      <details class="faq__item">
-        <summary class="faq__q">
-          도입 기간은 얼마나 걸리나요?
-          <span class="faq__icon" aria-hidden="true"></span>
-        </summary>
-        <div class="faq__a">
-          최소 범위는 보통 <strong>수일~1주</strong> 내 셋업이 가능합니다. (웹/CRM 환경에 따라 상이)
-          “먼저 측정 → 이후 최적화” 순서로 빠르게 가치를 확인합니다.
-        </div>
-      </details>
-
-      <details class="faq__item">
-        <summary class="faq__q">
-          기존 GA/CRM과 충돌하지 않나요?
-          <span class="faq__icon" aria-hidden="true"></span>
-        </summary>
-        <div class="faq__a">
-          기존 분석 도구는 그대로 유지하고, 계약/매출 이벤트를 <strong>추가로 연결</strong>하는 형태가 일반적입니다.
-          충돌 방지를 위해 이벤트 네이밍/권한/전송 조건을 설계합니다.
-        </div>
-      </details>
-
-      <details class="faq__item">
-        <summary class="faq__q">
-          비용/가격 구조는 어떻게 되나요?
-          <span class="faq__icon" aria-hidden="true"></span>
-        </summary>
-        <div class="faq__a">
-          회사 상황(광고비/채널/CRM/연동 범위)에 따라 달라져요.
-          무료 진단에서 <strong>가능 범위 + 우선순위</strong>를 먼저 잡고, 그 뒤에 비용을 안내하는 흐름이 가장 빠릅니다.
-        </div>
-      </details>
-    </div>
-
-    <div class="finalcta">
-      <div class="finalcta__copy">
-        <p class="finalcta__t">무료 진단으로 “계약 CPA 구조”를 먼저 잡아보세요</p>
-        <p class="finalcta__d">연동 가능 범위 · 개선 우선순위 · 예상 임팩트를 빠르게 안내드립니다.</p>
-      </div>
-      <div class="finalcta__actions">
-        <button class="btn btn--lg" type="button" data-scroll="form" data-type="agency">무료 진단 신청</button>
-        <button class="btn btn--lg btn--ghost" type="button" data-scroll="case">사례 리포트 받기</button>
-      </div>
-    </div>
-  </div>
-</section>
     <!-- CASE FORM -->
     <section class="section section--tint" id="case">
       <div class="container">
@@ -766,31 +711,46 @@
         </div>
 
         <div class="form-grid">
-          <form id="caseForm" class="form" autocomplete="on">
-            <div class="row">
-              <div class="field">
-                <label for="caseCompany">회사명</label>
-                <input id="caseCompany" name="company" type="text" placeholder="회사명" required />
+          <div>
+            <form id="caseForm" class="form" autocomplete="on">
+              <div class="row">
+                <div class="field">
+                  <label for="caseCompany">회사명</label>
+                  <input id="caseCompany" name="company" type="text" placeholder="회사명" required />
+                </div>
+                <div class="field">
+                  <label for="caseEmail">이메일</label>
+                  <input id="caseEmail" name="email" type="email" placeholder="이메일" required />
+                </div>
               </div>
-              <div class="field">
-                <label for="caseEmail">이메일</label>
-                <input id="caseEmail" name="email" type="email" placeholder="이메일" required />
+
+              <div class="agree">
+                <label class="check">
+                  <input id="caseAgree" type="checkbox" required />
+                  <span>개인정보 처리에 동의합니다.</span>
+                </label>
+                <p class="agree__hint">제출 시 이메일로 리포트를 발송합니다.</p>
+              </div>
+
+              <button class="btn btn--lg" type="submit">
+                <span class="btn__text">사례 리포트 받아보기</span>
+                <span class="btn__spinner" aria-hidden="true"></span>
+              </button>
+            </form>
+
+            <!-- 완료 카드 -->
+            <div class="success" id="caseSuccess" hidden aria-live="polite">
+              <div class="success__icon" aria-hidden="true">✓</div>
+              <div class="success__body">
+                <p class="success__t">리포트 요청 완료!</p>
+                <p class="success__d">입력하신 이메일로 리포트를 발송드릴게요.</p>
+                <div class="success__actions">
+                  <button class="btn" type="button" data-scroll="form" data-type="auto">무료 진단 신청</button>
+                  <button class="btn btn--ghost" type="button" id="caseRetry">다시 요청하기</button>
+                </div>
               </div>
             </div>
-
-            <div class="agree">
-              <label class="check">
-                <input id="caseAgree" type="checkbox" required />
-                <span>개인정보 처리에 동의합니다.</span>
-              </label>
-              <p class="agree__hint">제출 시 이메일로 리포트를 발송합니다.</p>
-            </div>
-
-            <button class="btn btn--lg" type="submit">
-              <span class="btn__text">사례 리포트 받아보기</span>
-              <span class="btn__spinner" aria-hidden="true"></span>
-            </button>
-          </form>
+          </div>
 
           <aside class="side">
             <div class="side__card">
@@ -802,6 +762,99 @@
               </ul>
             </div>
           </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <div class="chip">FAQ</div>
+            <h2 class="h2">도입 전에 가장 많이 묻는 질문</h2>
+            <p class="sub">불확실한 지점을 먼저 제거하면 전환이 올라갑니다.</p>
+          </div>
+          <button class="btn btn--ghost" type="button" data-scroll="form" data-type="auto">바로 무료 진단</button>
+        </div>
+
+        <div class="faq__list">
+          <details class="faq__item">
+            <summary class="faq__q">
+              개발 리소스가 많이 필요하나요?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__a">
+              기본은 <strong>스크립트 1줄</strong> 또는 GTM으로 시작합니다. CRM 연동도 대부분 가이드에 따라 빠르게 진행 가능하며,
+              조직 상황에 따라 최소 범위로 먼저 연결 후 확장할 수 있어요.
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__q">
+              개인정보/보안은 어떻게 처리하나요?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__a">
+              개인정보는 <strong>필요 최소</strong>만 사용하며, 전송 시 <strong>해시/서버사이드</strong> 처리 구조로 설계합니다.
+              내부 권한 분리 및 로그 기반 검증 흐름을 권장합니다.
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__q">
+              어떤 이벤트까지 광고 매체에 학습시키나요?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__a">
+              리드(문의)뿐 아니라 <strong>MQL/SQL/계약/매출</strong> 같은 “비즈니스 신호”를 단계적으로 연결합니다.
+              팀의 세일즈 프로세스에 맞춘 이벤트 정의가 핵심입니다.
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__q">
+              도입 기간은 얼마나 걸리나요?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__a">
+              최소 범위는 보통 <strong>수일~1주</strong> 내 셋업이 가능합니다. (웹/CRM 환경에 따라 상이)
+              “먼저 측정 → 이후 최적화” 순서로 빠르게 가치를 확인합니다.
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__q">
+              기존 GA/CRM과 충돌하지 않나요?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__a">
+              기존 분석 도구는 그대로 유지하고, 계약/매출 이벤트를 <strong>추가로 연결</strong>하는 형태가 일반적입니다.
+              충돌 방지를 위해 이벤트 네이밍/권한/전송 조건을 설계합니다.
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__q">
+              비용/가격 구조는 어떻게 되나요?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__a">
+              회사 상황(광고비/채널/CRM/연동 범위)에 따라 달라져요.
+              무료 진단에서 <strong>가능 범위 + 우선순위</strong>를 먼저 잡고, 그 뒤에 비용을 안내하는 흐름이 가장 빠릅니다.
+            </div>
+          </details>
+        </div>
+
+        <div class="finalcta">
+          <div class="finalcta__copy">
+            <p class="finalcta__t">무료 진단으로 “계약 CPA 구조”를 먼저 잡아보세요</p>
+            <p class="finalcta__d">연동 가능 범위 · 개선 우선순위 · 예상 임팩트를 빠르게 안내드립니다.</p>
+          </div>
+          <div class="finalcta__actions">
+            <button class="btn btn--lg" type="button" data-scroll="form" data-type="auto">무료 진단 신청</button>
+            <button class="btn btn--lg btn--ghost" type="button" data-scroll="case">사례 리포트 받기</button>
+          </div>
         </div>
       </div>
     </section>
@@ -818,18 +871,32 @@
 
         <div class="footer__links">
           <a href="#how">How it works</a>
+          <a href="#product">대시보드</a>
           <a href="#calculator">계약 CPA</a>
-          <a href="#case">솔루션 사례</a>
-          <a href="#form" data-scroll="form" data-type="agency">무료 진단</a>
+          <a href="#case">사례</a>
+          <a href="#faq">FAQ</a>
+          <a href="#form" data-scroll="form" data-type="auto">무료 진단</a>
         </div>
       </div>
     </footer>
   </main>
 
+  <!-- Mobile sticky CTA bar -->
+  <div class="sticky-cta" data-sticky-cta hidden>
+    <div class="sticky-cta__inner">
+      <button class="btn sticky-cta__btn" type="button" data-scroll="form" data-type="auto">
+        무료 진단
+      </button>
+      <button class="btn btn--ghost sticky-cta__btn" type="button" data-scroll="case">
+        사례 받기
+      </button>
+    </div>
+  </div>
+
   <div class="toast" role="status" aria-live="polite" aria-atomic="true" hidden>
     <span class="toast__text"></span>
   </div>
 
-  <script src="script.js?v=landing-v2"></script>
+  <script src="script.js?v=landing-v3"></script>
 </body>
 </html>
