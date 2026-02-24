@@ -493,4 +493,53 @@ document.addEventListener('DOMContentLoaded', () => {
   initLiveFormatting();
   initLeadForm();
   initCaseForm();
+  initDashboardTabs();
+  initFAQAccordion();
 });
+/* =========================
+   Dashboard tabs
+========================= */
+function initDashboardTabs() {
+  const root = document.getElementById('product');
+  if (!root) return;
+
+  const btns = Array.from(root.querySelectorAll('.tabs__btn'));
+  const panels = Array.from(root.querySelectorAll('.tabs__panel'));
+  if (!btns.length || !panels.length) return;
+
+  const setActive = (id) => {
+    btns.forEach(b => {
+      const on = b.dataset.tab === id;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+
+    panels.forEach(p => {
+      const on = p.dataset.panel === id;
+      p.hidden = !on;
+    });
+  };
+
+  btns.forEach(b => b.addEventListener('click', () => setActive(b.dataset.tab)));
+
+  const initial = btns.find(b => b.classList.contains('is-active'))?.dataset.tab || btns[0].dataset.tab;
+  setActive(initial);
+}
+
+/* =========================
+   FAQ accordion (single-open)
+========================= */
+function initFAQAccordion() {
+  const root = document.getElementById('faq');
+  if (!root) return;
+
+  const items = Array.from(root.querySelectorAll('.faq__item'));
+  if (!items.length) return;
+
+  items.forEach(d => {
+    d.addEventListener('toggle', () => {
+      if (!d.open) return;
+      items.forEach(other => { if (other !== d) other.open = false; });
+    });
+  });
+}
