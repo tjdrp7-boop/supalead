@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- [수정 포인트] 사이트 제목 / 설명 -->
+  <title>Supolead | B2B 기술 서비스 랜딩페이지</title>
+  <meta name="description" content="Supolead B2B 기술 서비스 소개, 기술 후기, 실사례, 자료 다운로드 페이지 템플릿입니다.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="scripts.js"></script>
+</head>
+<body data-page="case">
+
+  <a class="skip-link" href="#main">본문 바로가기</a>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-row">
+      <a class="brand" href="index.html" aria-label="Supolead 홈">
+        <img src="assets/logo.jpeg" alt="Supolead 로고">
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNav" data-menu-toggle>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="sr-only">메뉴 열기</span>
+      </button>
+
+      <nav class="site-nav" id="siteNav" aria-label="주요 메뉴">
+        <!-- [수정 포인트] 메뉴명 / 링크 구조 변경 -->
+        <a href="index.html#solution">서비스</a>
+        <a href="resources.html">리소스</a>
+        <a href="index.html#featured-content">기술 후기</a>
+        <a href="case-study.html">실사례</a>
+        <a href="index.html#faq">FAQ</a>
+        <a class="nav-cta" href="index.html#contact">문의하기</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="sub-hero" id="top">
+      <div class="container case-hero-grid">
+        <div>
+          <span class="eyebrow">Case Detail</span>
+          <!-- [수정 포인트] 고객사명 / 업종 / 문제 / 성과 요약 -->
+          <div class="case-logo">[CLIENT LOGO]</div>
+          <h1>[고객사명]이 [문제]를 해결하고
+핵심 지표를 끌어올린 과정</h1>
+          <p>케이스 상세 페이지는 랜딩보다 깊어야 합니다. 문제 배경, 실행 구조, 실제 결과, 고객 코멘트까지 한 번에 보여주는 구조로 구성했습니다.</p>
+
+          <div class="case-metrics case-metrics-hero">
+            <div>
+              <strong>+214%</strong>
+              <span>핵심 KPI 상승</span>
+            </div>
+            <div>
+              <strong>-61%</strong>
+              <span>운영 시간 절감</span>
+            </div>
+            <div>
+              <strong>4주</strong>
+              <span>첫 성과 체감</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="media-card media-card-cover">
+          <div class="media-meta">
+            <span class="media-chip">CASE HERO / 4:5</span>
+            <strong>대표 사례 비주얼</strong>
+            <p>고객 현장 / 업무 장면 / 인터뷰 컷</p>
+          </div>
+          <!-- [수정 포인트] 케이스 대표 이미지로 교체 -->
+          <img src="assets/case-photo.svg" alt="케이스 대표 이미지 예시">
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Challenge</span>
+          <h2>도입 전 상황과 과제</h2>
+          <p>왜 이 프로젝트가 필요했는지, 기존 방식이 어떤 한계를 가졌는지, 내부 설득 포인트는 무엇이었는지를 정리합니다.</p>
+        </div>
+
+        <div class="card-grid card-grid-2">
+          <article class="info-card">
+            <!-- [수정 포인트] 도입 전 상황 설명 -->
+            <h3>도입 전 문제 상황</h3>
+            <ul>
+              <li>수작업 보고와 반복 정리 시간이 과도하게 걸림</li>
+              <li>부서 간 정보 흐름이 끊겨 의사결정이 느림</li>
+              <li>성과를 숫자로 설명하기 어려워 내부 설득이 힘듦</li>
+            </ul>
+          </article>
+
+          <article class="info-card">
+            <h3>프로젝트 목표</h3>
+            <ul>
+              <li>핵심 지표를 실시간으로 확인 가능한 구조 만들기</li>
+              <li>반복 리포팅 시간을 줄이고 실행 속도 높이기</li>
+              <li>내부 공유용 결과물을 일관되게 제공하기</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container solution-grid">
+        <div>
+          <div class="section-head section-head-left">
+            <span class="eyebrow">Approach</span>
+            <h2>어떻게 해결했는지 보여주는 실행 구조</h2>
+            <p>결과만 말하는 케이스보다, 실제 접근 방식과 단계가 보이는 케이스가 훨씬 신뢰를 만듭니다.</p>
+          </div>
+
+          <div class="step-list">
+            <!-- [수정 포인트] 실행 단계 수정 -->
+            <article>
+              <span>01</span>
+              <div>
+                <h3>진단과 설계</h3>
+                <p>목표 지표, 현재 구조, 필요한 데이터를 정렬합니다.</p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <h3>세팅과 적용</h3>
+                <p>운영 화면과 리포트 흐름을 실제 환경에 맞게 구성합니다.</p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <h3>측정과 최적화</h3>
+                <p>성과를 주기적으로 추적하고 개선 포인트를 반영합니다.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="stack-grid">
+          <div class="media-card">
+            <div class="media-meta">
+              <span class="media-chip">DASHBOARD / 16:10</span>
+              <strong>실행 화면 / 대시보드</strong>
+              <p>프로젝트 결과물이 어떤 형태로 보였는지</p>
+            </div>
+            <!-- [수정 포인트] 실제 대시보드 캡처로 교체 -->
+            <img src="assets/hero-ui.svg" alt="케이스 실행 화면 예시">
+          </div>
+
+          <div class="media-split">
+            <div class="media-card">
+              <div class="media-meta">
+                <span class="media-chip">PHOTO / 16:9</span>
+                <strong>회의 / 워크숍 / 현장 사진</strong>
+                <p>과정이 보이는 이미지</p>
+              </div>
+              <!-- [수정 포인트] 실제 현장 사진으로 교체 -->
+              <img src="assets/team-photo.svg" alt="워크숍 사진 예시">
+            </div>
+
+            <div class="media-card">
+              <div class="media-meta">
+                <span class="media-chip">CHART / 16:9</span>
+                <strong>전후 비교 그래프</strong>
+                <p>수치 중심 케이스의 핵심 증거</p>
+              </div>
+              <!-- [수정 포인트] 실제 성과 그래프로 교체 -->
+              <img src="assets/chart.svg" alt="성과 그래프 예시">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container result-grid">
+        <div class="result-summary">
+          <div class="section-head section-head-left compact-head">
+            <span class="eyebrow">Result</span>
+            <h2>결과와 고객 코멘트</h2>
+            <p>성과 수치, 운영 변화, 고객 한마디를 한 번에 보여주면 전환 연결이 가장 자연스럽습니다.</p>
+          </div>
+
+          <div class="case-metrics case-metrics-grid">
+            <div>
+              <strong>+214%</strong>
+              <span>핵심 KPI 상승</span>
+            </div>
+            <div>
+              <strong>-61%</strong>
+              <span>운영 시간 절감</span>
+            </div>
+            <div>
+              <strong>2.8x</strong>
+              <span>리드 전환 개선</span>
+            </div>
+            <div>
+              <strong>4주</strong>
+              <span>첫 성과 체감</span>
+            </div>
+          </div>
+
+          <blockquote class="quote-block">
+            “단순히 결과물이 좋아진 게 아니라, 내부에서 설명하고 설득하는 시간이 확실히 줄었습니다.”
+            <cite>[고객사 담당자 / 직함]</cite>
+          </blockquote>
+        </div>
+
+        <aside class="sticky-card">
+          <h3>다음 액션</h3>
+          <p>비슷한 상황이라면 아래 중 하나로 바로 연결되게 구성하는 편이 좋습니다.</p>
+          <ul>
+            <li>우리 회사 적용 가능성 상담</li>
+            <li>비슷한 업종 사례 더 보기</li>
+            <li>무료 진단 / 데모 요청</li>
+          </ul>
+          <a class="btn btn-primary" href="index.html#contact">비슷한 케이스 상담받기</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Related Content</span>
+          <h2>연관 리소스와 사례를 함께 연결</h2>
+          <p>케이스 상세 페이지 하단에는 관련 리소스나 추가 사례를 붙여 체류 시간을 늘리는 것이 좋습니다.</p>
+        </div>
+
+        <div class="card-grid card-grid-3">
+          <article class="resource-card">
+            <a class="resource-thumb" href="resources.html">
+              <img src="assets/diagram.svg" alt="관련 기술 후기 썸네일 예시">
+            </a>
+            <span class="content-label">기술 후기</span>
+            <h3><a href="resources.html">이 케이스와 연결되는 구조 설명 글</a></h3>
+            <p>왜 가능한지 궁금해하는 고관여 리드를 위한 연결</p>
+          </article>
+
+          <article class="resource-card">
+            <a class="resource-thumb" href="resources.html#download">
+              <img src="assets/resource-guide.svg" alt="관련 체크리스트 썸네일 예시">
+            </a>
+            <span class="content-label">체크리스트</span>
+            <h3><a href="resources.html#download">도입 검토 체크리스트 다운로드</a></h3>
+            <p>세일즈 부담 없이 이어지는 중간 전환 장치</p>
+          </article>
+
+          <article class="resource-card">
+            <a class="resource-thumb" href="resources.html">
+              <img src="assets/chart.svg" alt="관련 리포트 썸네일 예시">
+            </a>
+            <span class="content-label">리포트</span>
+            <h3><a href="resources.html">성과형 사례에 잘 맞는 업종 리포트</a></h3>
+            <p>숫자로 설득해야 하는 리드에게 잘 맞는 콘텐츠</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <!-- [수정 포인트] 회사명 / 소개 문구 / 주소 / 연락처 -->
+        <a class="footer-brand" href="index.html">
+          <img src="assets/logo.jpeg" alt="Supolead 로고">
+        </a>
+        <p class="footer-copy">B2B 기술 서비스의 가치 제안, 기술 이해, 실사례 설득, 문의 전환까지 한 번에 담을 수 있도록 설계된 실제용 웹사이트 템플릿입니다.</p>
+        <p class="footer-meta">서울시 [주소 입력] · hello@example.com · 02-0000-0000</p>
+      </div>
+
+      <div>
+        <h3>바로가기</h3>
+        <ul class="footer-links">
+          <li><a href="index.html#solution">서비스 소개</a></li>
+          <li><a href="resources.html">리소스 허브</a></li>
+          <li><a href="case-study.html">대표 사례</a></li>
+          <li><a href="index.html#contact">상담 문의</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>운영 가이드</h3>
+        <ul class="footer-links">
+          <li><a href="resources.html#newsletter">뉴스레터</a></li>
+          <li><a href="resources.html#download">자료 다운로드</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="README.md">수정 안내</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span id="currentYear"></span> Supolead. All rights reserved.</p>
+      <a href="#top">맨 위로</a>
+    </div>
+  </footer>
+
+</body>
+</html>
