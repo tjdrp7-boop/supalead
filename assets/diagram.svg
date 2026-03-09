@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" fill="none">
+  <rect width="1200" height="720" rx="40" fill="#F7F7FA"/>
+  <rect x="40" y="40" width="1120" height="640" rx="32" fill="white" stroke="#E8E8EE" stroke-width="4"/>
+  <circle cx="250" cy="360" r="88" fill="#111216" opacity=".92"/>
+  <circle cx="600" cy="208" r="88" fill="#FF2433" opacity=".9"/>
+  <circle cx="600" cy="512" r="88" fill="#111216" opacity=".1"/>
+  <circle cx="948" cy="360" r="88" fill="#111216" opacity=".92"/>
+  <path d="M328 326L522 242" stroke="#111216" stroke-width="12" stroke-linecap="round"/>
+  <path d="M328 394L522 478" stroke="#111216" stroke-width="12" stroke-linecap="round"/>
+  <path d="M680 242L870 326" stroke="#111216" stroke-width="12" stroke-linecap="round"/>
+  <path d="M680 478L870 394" stroke="#111216" stroke-width="12" stroke-linecap="round"/>
+  <rect x="184" y="594" width="134" height="18" rx="9" fill="#111216" opacity=".12"/>
+  <rect x="532" y="594" width="134" height="18" rx="9" fill="#111216" opacity=".12"/>
+  <rect x="882" y="594" width="134" height="18" rx="9" fill="#111216" opacity=".12"/>
+  <text x="88" y="110" fill="#6A7180" font-family="Arial, Helvetica, sans-serif" font-size="28">시스템 구조 / 데이터 흐름도 교체</text>
+</svg>

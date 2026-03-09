@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" fill="none">
+  <rect width="1200" height="780" rx="40" fill="#111216"/>
+  <rect x="74" y="78" width="250" height="36" rx="18" fill="#FF2433" opacity=".16"/>
+  <rect x="74" y="160" width="554" height="42" rx="21" fill="white" opacity=".92"/>
+  <rect x="74" y="220" width="436" height="34" rx="17" fill="white" opacity=".22"/>
+  <rect x="74" y="318" width="372" height="210" rx="28" fill="white" opacity=".08"/>
+  <rect x="494" y="318" width="632" height="210" rx="28" fill="#FF2433" opacity=".14"/>
+  <rect x="74" y="574" width="1052" height="128" rx="28" fill="white" opacity=".08"/>
+  <path d="M572 420h390" stroke="#FF2433" stroke-width="16" stroke-linecap="round"/>
+  <path d="M572 466h252" stroke="white" stroke-opacity=".5" stroke-width="14" stroke-linecap="round"/>
+  <path d="M134 470l52-72 52 38 62-92 78 126" stroke="white" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="74" y="706" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="34">대표 기술 콘텐츠 썸네일 자리</text>
+</svg>

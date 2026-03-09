@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" fill="none">
+  <rect width="1200" height="900" rx="40" fill="#F7F7FA"/>
+  <rect x="52" y="52" width="1096" height="796" rx="34" fill="white" stroke="#E8E8EE" stroke-width="4"/>
+  <rect x="116" y="642" width="968" height="124" rx="30" fill="#111216" opacity=".04"/>
+  <circle cx="418" cy="396" r="154" fill="#111216" opacity=".92"/>
+  <rect x="640" y="242" width="356" height="220" rx="30" fill="#FFEEF0"/>
+  <path d="M724 410l60-82 66 56 66-98 66 124" stroke="#FF2433" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="640" y="506" width="314" height="22" rx="11" fill="#111216" opacity=".12"/>
+  <rect x="640" y="548" width="252" height="18" rx="9" fill="#111216" opacity=".08"/>
+  <rect x="116" y="692" width="286" height="20" rx="10" fill="#111216" opacity=".12"/>
+  <rect x="116" y="726" width="516" height="18" rx="9" fill="#111216" opacity=".08"/>
+  <text x="116" y="144" fill="#6A7180" font-family="Arial, Helvetica, sans-serif" font-size="30">대표 사례 이미지 / 현장 사진 교체</text>
+</svg>

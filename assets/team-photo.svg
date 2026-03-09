@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" fill="none">
+  <rect width="900" height="1100" rx="40" fill="#F7F7FA"/>
+  <rect x="48" y="48" width="804" height="1004" rx="32" fill="white" stroke="#E8E8EE" stroke-width="4"/>
+  <rect x="96" y="820" width="708" height="172" rx="28" fill="#111216" opacity=".04"/>
+  <circle cx="462" cy="392" r="148" fill="#FFEEF0"/>
+  <circle cx="462" cy="364" r="82" fill="#111216" opacity=".86"/>
+  <path d="M304 674c26-124 112-188 158-188s132 64 158 188" stroke="#111216" stroke-width="46" stroke-linecap="round"/>
+  <circle cx="256" cy="376" r="52" fill="#111216" opacity=".12"/>
+  <circle cx="668" cy="454" r="64" fill="#FF2433" opacity=".14"/>
+  <rect x="112" y="866" width="242" height="22" rx="11" fill="#111216" opacity=".12"/>
+  <rect x="112" y="910" width="448" height="18" rx="9" fill="#111216" opacity=".08"/>
+  <rect x="112" y="944" width="392" height="18" rx="9" fill="#111216" opacity=".08"/>
+  <text x="112" y="144" fill="#6A7180" font-family="Arial, Helvetica, sans-serif" font-size="30">실사 사진 자리 / 인터뷰 컷 교체</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" fill="none">
+  <rect width="1200" height="780" rx="40" fill="#F7F7FA"/>
+  <rect x="42" y="42" width="1116" height="696" rx="32" fill="white" stroke="#E8E8EE" stroke-width="4"/>
+  <rect x="42" y="42" width="1116" height="76" rx="32" fill="#FCFCFD"/>
+  <circle cx="94" cy="80" r="10" fill="#FF5C67"/>
+  <circle cx="126" cy="80" r="10" fill="#111216" opacity=".15"/>
+  <circle cx="158" cy="80" r="10" fill="#111216" opacity=".15"/>
+  <rect x="88" y="164" width="236" height="528" rx="24" fill="#111216"/>
+  <rect x="128" y="220" width="140" height="16" rx="8" fill="white" opacity=".8"/>
+  <rect x="128" y="260" width="176" height="16" rx="8" fill="white" opacity=".3"/>
+  <rect x="128" y="322" width="152" height="14" rx="7" fill="white" opacity=".2"/>
+  <rect x="128" y="364" width="124" height="14" rx="7" fill="white" opacity=".2"/>
+  <rect x="128" y="406" width="148" height="14" rx="7" fill="white" opacity=".2"/>
+  <rect x="128" y="448" width="116" height="14" rx="7" fill="white" opacity=".2"/>
+  <rect x="372" y="164" width="716" height="176" rx="26" fill="#F7F7FA" stroke="#E8E8EE" stroke-width="3"/>
+  <rect x="420" y="212" width="184" height="22" rx="11" fill="#111216" opacity=".12"/>
+  <rect x="420" y="254" width="330" height="18" rx="9" fill="#111216" opacity=".08"/>
+  <rect x="420" y="286" width="270" height="18" rx="9" fill="#111216" opacity=".08"/>
+  <rect x="828" y="204" width="212" height="96" rx="22" fill="#FFEEF0"/>
+  <path d="M880 266l36-46 38 30 42-60 46 76" stroke="#FF2433" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="372" y="370" width="338" height="322" rx="26" fill="#111216"/>
+  <rect x="420" y="418" width="128" height="20" rx="10" fill="white" opacity=".8"/>
+  <rect x="420" y="460" width="222" height="16" rx="8" fill="white" opacity=".18"/>
+  <rect x="420" y="514" width="44" height="120" rx="14" fill="#FF2433" opacity=".65"/>
+  <rect x="486" y="478" width="44" height="156" rx="14" fill="#FF2433" opacity=".75"/>
+  <rect x="552" y="438" width="44" height="196" rx="14" fill="#FF2433" opacity=".85"/>
+  <rect x="618" y="396" width="44" height="238" rx="14" fill="#FF2433"/>
+  <rect x="750" y="370" width="338" height="152" rx="26" fill="#FFF4F5" stroke="#FFD5DA" stroke-width="3"/>
+  <circle cx="822" cy="446" r="34" fill="#FF2433" opacity=".12"/>
+  <path d="M822 428c12 0 22 10 22 22s-10 22-22 22-22-10-22-22 10-22 22-22Zm0-16c-18 0-32 14-32 32s14 32 32 32 32-14 32-32-14-32-32-32Z" fill="#FF2433"/>
+  <rect x="878" y="420" width="164" height="20" rx="10" fill="#111216" opacity=".12"/>
+  <rect x="878" y="458" width="128" height="18" rx="9" fill="#111216" opacity=".08"/>
+  <rect x="750" y="540" width="338" height="152" rx="26" fill="#F7F7FA" stroke="#E8E8EE" stroke-width="3"/>
+  <rect x="796" y="584" width="164" height="18" rx="9" fill="#111216" opacity=".12"/>
+  <rect x="796" y="620" width="236" height="18" rx="9" fill="#111216" opacity=".08"/>
+  <text x="88" y="710" fill="#6A7180" font-family="Arial, Helvetica, sans-serif" font-size="22">대표 제품 화면 / 대시보드 예시</text>
+</svg>
